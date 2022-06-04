@@ -1,0 +1,8 @@
+asgiref==3.4.1
+backports.zoneinfo==0.2.1
+Django==4.0
+django-crispy-forms==1.13.0
+django-taggit==2.0.0
+django-widget-tweaks==1.4.9
+sqlparse==0.4.2
+tzdata==2021.5

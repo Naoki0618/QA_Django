@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <!-- 画面右部 -->
+    <div class="main_contents col-10">
+        <div class="row pt-3 pb-2">
+            <div class="col-auto">
+                <label class="col-form-label">{{ posts.category_system }}</label>
+                <label class="col-form-label">Q-{{ posts.id }}</label>
+            </div>
+        </div>
+        <div class="pb-2"><h4 style="color: rgb(82, 88, 94);">{{ posts.question_title }}</h4></div>
+        
+        <form action="{% url 'answer' posts.pk %}" method="GET">
+            {% csrf_token %}
+            <div class="card w-100 mb-3">
+                <div class="container-fluid card-body">
+                    <div class="card-title">
+                        <p class="text">
+                            <div class="wrapper">
+                                <div class="block block1"><i class="far fa-address-card fa-2x text_icon"></i></div>
+                                <div class="text_name"><p style="text-align: left;">質問者：{{ posts.questioner }}</p></div>
+                                <div class=""><p style="text-align: left; color: slategray;">{{ posts.update }}</p></div>
+                                <button type="submit" value="click" class="block block4 btn btn-primary btn-lg btn-circle btn-circle" tabindex="-1" role="button"><i class="fas fa-check"></i></button>
+                            </div>
+                        </p>
+                    </div>
+                    <p class="card-text">
+                        <div class="pb-3">{{ posts.question_contents| linebreaksbr }}</div>
+                        <div class="container" style="padding: 0px;">
+                            <div class="contents_title_color status border-top">ステータス</div>
+                            <div class="status_data border-top">{{ posts.status }}</div>
+                            <div class="contents_title_color questioner border-top">質問者</div>
+                            <div class="questioner_data border-top">{{ posts.questioner }}</div>
+                            <div class="contents_title_color category1 border-top border-bottom">大項目</div>
+                            <div class="category1_data border-top border-bottom">{{ posts.category_system }}</div>
+                            <div class="contents_title_color category2 border-top border-bottom">中項目</div>
+                            <div class="category2_data border-top border-bottom">{{ posts.category_detail }}</div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <div class="card w-100 mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Answer</h5>
+                    <div class="pb-2">{{ form.answer|as_crispy_field }}</div>
+                </div>
+            </div>
+        </form>
+            
+        <!-- 戻る -->
+        <a href="/myapp" class="btn btn-primary btn-lg" tabindex="-1" role="button"><i class="far fa-arrow-alt-circle-left"></i></a>
+    </div>
+
+{% endblock %}
