@@ -8,8 +8,8 @@
 
         <form action="{% url 'edit' posts.id %}" method="POST">
             {% csrf_token %}
-            <div class="row pt-3 pb-2">
-                <div class="col-auto">
+            <div class="container_detail row pt-3 pb-2">
+                <div class="container_detail_title col-auto">
                     <label class="col-form-label">{{ posts.category_system }}</label>
                     <label class="col-form-label" style="padding-right: 15px;">Q-{{ posts.id }}</label>
                     <label class="col-form-label">

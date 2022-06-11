@@ -35,7 +35,7 @@ a:hover{
 
 .main_history table{
   margin: auto;
-  padding: 0;
+  padding: 10px 20px;
   display:block;
 }
 
@@ -61,10 +61,6 @@ a:hover{
   border-bottom:1px solid #d6cece;
   border-left:1px solid #d6cece;
   border-right:1px solid #d6cece;
-}
-
-.main_history table{
-  padding: 10px 20px;
 }
 
 /* ヘッダー */
@@ -111,10 +107,14 @@ body {
 }
 
 /* body左 */
-.main_list {
+.contents_left {
     padding: 0px;
     background-image: url("images/white_00007.jpeg");
     background-blend-mode: multiply;
+}
+
+.wrapper_left{
+  padding-left: 3px;
 }
 
 .sub_list{
@@ -126,9 +126,7 @@ body {
 }
 
 /* body右 */
-#table1_wrapper{
-    padding: 0px;
-}
+
 
 #search_form{
     padding-top: 20px;
@@ -139,7 +137,7 @@ body {
     height: 100vh;
 }
 
-.search_forms{
+.contents_right{
     padding-right: 30px;
     padding-left: 30px;
 }
@@ -189,8 +187,11 @@ tr:hover{
     background-color: #fcfae1;
 }
 
-table {
-	border-collapse: collapse ;
+
+
+
+.main_contents{
+  margin: 5px auto;
 }
 
 /* 詳細画面 */
@@ -209,9 +210,6 @@ table {
   display: block;
 }
 
-.modal_new_order table tr{
-  padding: 10px;
-}
 
 .block1 { 
   grid-area: one; 
@@ -336,4 +334,47 @@ table {
   height: 70px;
   line-height: 70px;
   font-size: 1.3rem;
+}
+.container_detail{
+  margin:0;
+}
+
+.container_detail_title{
+  padding:0;
+}
+
+.questions{
+  padding-top: 10px;
+}
+
+td.details-control {
+  text-align:center;
+  width:5%;
+  min-width:5%;
+  max-width:5%;
+}
+td.details-control:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0fe";
+  font-weight: 900;
+  padding: 0px;
+  color: #f67280;　/*アイコンの色*/
+}
+tr.shown td.details-control:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f146";
+  font-weight: 900;
+  padding-left: 0px;
+  color: #36b5b0; /*アイコンの色*/
+}
+
+.btn-flat-border:hover {
+  background: #ff7f7f;
+  color: white;
+}
+
+#table2{
+	/* display: block; */
+	width: 100%;
+	height: auto;
 }

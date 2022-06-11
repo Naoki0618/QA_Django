@@ -3,9 +3,11 @@
 
 {% block content %}
 
-    <!-- 画面右部 -->
-    <div class="search_forms col-lg-10 col-sm-12">
-        <!-- 検索フォーム -->
+<!-- 画面右部 -->
+<div class="contents_right col-lg-10 col-sm-12">
+    <!-- 検索フォーム -->
+    <div class="search_form d-none d-md-block">
+
         <form action="{% url 'find' %}" method="POST">
             {% csrf_token %}
             <div class="row" id="search_form">
@@ -13,30 +15,36 @@
                     <label>大分類</label>
                     <input type="text" name="category_system" maxlength="30" class="form-control">
                 </div>
-                <div class="form-group col-md-2 mt-2">  
+                <div class="form-group col-md-2 mt-2">
                     <label>中分類</label>
                     <input type="text" name="category_detail" maxlength="30" class="form-control">
                 </div>
-                <div class="form-group col-md-2 mt-2">  
+                <div class="form-group col-md-2 mt-2">
                     <label>質問内容</label>
                     <input type="text" name="question_contents" maxlength="30" class="form-control">
                 </div>
-                <div class="form-group col-md-2 mt-2">  
+                <div class="form-group col-md-2 mt-2">
                     <label>回答</label>
                     <input type="text" name="answer" maxlength="30" class="form-control">
                 </div>
-                <div class="form-group col-md-2 mt-1"> 
+                <div class="form-group col-md-2 mt-1">
                     <label> </label>
-                    <button type="submit" value="click" class="block block4 btn btn-success btn-lg btn-circle btn-circle" tabindex="-1" role="button"><i class="fas fa-search"></i></i></button>
-                </div>  
+                    <button type="submit" value="click"
+                        class="block block4 btn btn-success btn-lg btn-circle btn-circle" tabindex="-1" role="button"><i
+                            class="fas fa-search"></i></i></button>
+                </div>
             </div>
         </form>
-        
-        <!-- 質問一覧 -->
-        <div class="questions">
-            <table border="1" id="table1" class="table table-hover" >
+    </div>
+
+    <!-- 質問一覧 -->
+    <div class="questions">
+        <div class="table-responsive-sm d-none d-md-block">
+
+            <table border="1" id="table1" class="table table-hover">
                 <thead>
                     <tr>
+                        <!-- <th></th>  -->
                         <th class="text-nowrap" style="width: 5%">ID</th>
                         <th class="text-nowrap" style="width: 10%">大分類</th>
                         <th class="text-nowrap" style="width: 10%">中分類</th>
@@ -50,28 +58,86 @@
                     {% if posts != 0 %}
                     {% for post in posts %}
                     <tr class="question">
+                        <!-- <td class='details-control'></td> -->
                         <td>{{ post.id }}</td>
                         <td>{{ post.category_system }}</td>
                         <td>{{ post.category_detail }}</td>
-                        <td class="question_title"><a href="{% url 'detail' pk=post.pk %}">{{ post.question_title }}</a></td>
+                        <td class="question_title"><a href="{% url 'detail' pk=post.pk %}">{{ post.question_title }}</a>
+                        </td>
                         {% if post.status == "新規" %}
-                        <td style="text-align: center"><div class="list_status" style="background: rgb(235, 134, 134);">{{ post.status }}</td>
+                        <td style="text-align: center">
+                            <div class="list_status" style="background: rgb(235, 134, 134);">{{ post.status }}
+                        </td>
                         {% elif post.status == "確認中" %}
-                        <td style="text-align: center"><div class="list_status" style="background: rgb(64, 175, 125);">{{ post.status }}</td>
+                        <td style="text-align: center">
+                            <div class="list_status" style="background: rgb(64, 175, 125);">{{ post.status }}
+                        </td>
                         {% else %}
-                        <td style="text-align: center"><div class="list_status" style="background: rgb(172, 201, 224);">{{ post.status }}</td>
+                        <td style="text-align: center">
+                            <div class="list_status" style="background: rgb(172, 201, 224);">{{ post.status }}
+                        </td>
                         {% endif %}
                         <td style="text-align: center">
                             {% for p in post.tags %}
                             <span class="badge bg-secondary">{{p}}</span>
                             {% endfor %}
                         </td>
-                        <td align="center"><a href="{% url 'answer' pk=post.pk %}"><i class="fas fa-comment-medical"></i></a></td>
+                        <td align="center"><a href="{% url 'answer' pk=post.pk %}"><i
+                                    class="fas fa-comment-medical"></i></a></td>
+                        {% endfor %}
+                        {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- スマホ -->
+        <table border="1" id="table2" class="d-lg-none d-lg-block table table-hover">
+            <thead>
+                <tr>
+                    <th></th> 
+                    <th class="text-nowrap" style="width: 5%">ID</th>
+                    <th class="text-nowrap" style="width: 10%">大分類</th>
+                    <th class="text-nowrap" style="width: 10%">中分類</th>
+                    <th class="text-nowrap" style="width: 40%">タイトル</th>
+                    <th class="text-nowrap" style="width: 10%">ステータス</th>
+                    <th class="text-nowrap" style="width: 20%">検索タグ</th>
+                    <th class="text-nowrap" style="width: 20%">回答</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if posts != 0 %}
+                {% for post in posts %}
+                <tr class="question">
+                    <td class='details-control'></td>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.category_system }}</td>
+                    <td>{{ post.category_detail }}</td>
+                    <td class="question_title"><a href="{% url 'detail' pk=post.pk %}">{{ post.question_title }}</a>
+                    </td>
+                    {% if post.status == "新規" %}
+                    <td style="text-align: center">
+                        <div class="list_status" style="background: rgb(235, 134, 134);">{{ post.status }}
+                    </td>
+                    {% elif post.status == "確認中" %}
+                    <td style="text-align: center">
+                        <div class="list_status" style="background: rgb(64, 175, 125);">{{ post.status }}
+                    </td>
+                    {% else %}
+                    <td style="text-align: center">
+                        <div class="list_status" style="background: rgb(172, 201, 224);">{{ post.status }}
+                    </td>
+                    {% endif %}
+                    <td style="text-align: center">
+                        {% for p in post.tags %}
+                        <span class="badge bg-secondary">{{p}}</span>
+                        {% endfor %}
+                    </td>
+                    <td align="center"><a href="{% url 'answer' pk=post.pk %}"><i
+                                class="fas fa-comment-medical"></i></a></td>
                     {% endfor %}
                     {% endif %}
-                            </tbody>    
-                        </table>
-                    </div>
-                </div>
-                    
-                    {% endblock %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
