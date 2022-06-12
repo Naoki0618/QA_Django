@@ -16,8 +16,6 @@
     <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/datatables.min.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"> -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
     <script>
@@ -26,10 +24,12 @@
         gtag('js', new Date());
         gtag('config', 'UA-167993608-2');
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
     <title>QLog | 質問管理システム</title>
 </head>
 <header>
-    <div class="col-12">
+    <div class="col-11 col-md-11" style="float: left; display: block;">
         <div class="header_logo">
             <a href="/myapp"><i class="fas fa-box"></i></a>
 
@@ -72,13 +72,47 @@
             </div>
         </div>
     </div>
+    <!-- 検索フォーム -->
+    <div class="contents_list col-0 col-md-0 d-lg-none">
+        <span><i class="fas fa-search"></i></span>
+        <div class="answer">
+            <div class="contents_left">
+                <div class="wrapper_left">
+    
+                    <nav class="nav flex-column">
+                        <br>
+                        <a href="{% url 'add' %}" class="btn-flat-border">
+                            <td>
+                                <h6 style="font-weight: bold;"><i class="sub_list far fa-plus-square" style="font-weight:bold;
+                                                "></i>
+                            </td>質問の追加</h6>
+                        </a>
+                    </nav>
+                    <div class="main_history">
+                        <table>
+                            <tr>
+                                <th>更新タイトル</th>
+                            </tr>
+                            {% if hists != 0 %}
+                            {% for hist in hists %}
+                            <tr>
+                                <td><a href="{% url 'detail' pk=hist.pk %}">{{ hist.question_title }}</a></td>
+                                <!-- <td>{{ post.question_title }}</td> -->
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 <hr>
-
 <body>
     <div class="main_body row">
         <!-- 画面左部 -->
-        <div class="contents_left d-none d-md-block col-lg-2 col-sm-0">
+        <div class="contents_left d-none d-lg-block col-lg-2 col-sm-0">
             <div class="wrapper_left">
 
                 <nav class="nav flex-column">
@@ -110,8 +144,12 @@
                         {% endif %}
                     </table>
                 </div>
+
             </div>
+
         </div>
+
+
         {% block content %}
         {% endblock %}
     </div>
@@ -138,10 +176,8 @@
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-    <!-- <script type="text/javascript" src="jquery.dataTables.js"></script> -->
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/datatables.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script src="{% static '/script.js' %}"></script>
     <script>
         $(function () {
             // datatableの設定を変更
@@ -195,32 +231,6 @@
                     row.child(format(row.data())).show();
                     tr.addClass('shown');
                 }
-            });
-
-            // "全部開く" ボタン
-            $('#btn-show-all').on('click', function () {
-                // Enumerate all rows
-                ghibuliTable.rows().every(function () {
-
-                    if (!this.child.isShown()) {
-                        this.child(format(this.data())).show();
-                        $(this.node()).addClass('shown');
-
-                    }
-                });
-            });
-
-            // "全部閉じる" ボタン
-            $('#btn-hide-all').on('click', function () {
-
-                ghibuliTable.rows().every(function () {
-
-                    if (this.child.isShown()) {
-                        this.child.hide();
-                        $(this.node()).removeClass('shown');
-                    }
-
-                });
             });
         }); 
     </script>

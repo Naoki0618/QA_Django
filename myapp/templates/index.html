@@ -6,7 +6,7 @@
 <!-- 画面右部 -->
 <div class="contents_right col-lg-10 col-sm-12">
     <!-- 検索フォーム -->
-    <div class="search_form d-none d-md-block">
+    <div class="search_form d-none d-lg-block">
 
         <form action="{% url 'find' %}" method="POST">
             {% csrf_token %}
@@ -39,7 +39,7 @@
 
     <!-- 質問一覧 -->
     <div class="questions">
-        <div class="table-responsive-sm d-none d-md-block">
+        <div class="table-responsive-sm d-none d-lg-block">
 
             <table border="1" id="table1" class="table table-hover">
                 <thead>
@@ -91,10 +91,10 @@
         </div>
 
         <!-- スマホ -->
-        <table border="1" id="table2" class="d-lg-none d-lg-block table table-hover">
+        <table border="1" id="table2" class="d-lg-none table table-hover">
             <thead>
                 <tr>
-                    <th></th> 
+                    <th></th>
                     <th class="text-nowrap" style="width: 5%">ID</th>
                     <th class="text-nowrap" style="width: 10%">大分類</th>
                     <th class="text-nowrap" style="width: 10%">中分類</th>
