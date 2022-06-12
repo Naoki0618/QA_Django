@@ -12,10 +12,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/cd88833802.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
     <link rel="stylesheet" type="text/css"
         href="https://cdn.datatables.net/v/dt/dt-1.12.1/r-2.3.0/datatables.min.css" />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
     <script>
@@ -72,20 +74,18 @@
             </div>
         </div>
     </div>
-    <!-- 検索フォーム -->
+    <!-- スマホ用　検索フォーム -->
     <div class="contents_list col-0 col-md-0 d-lg-none">
-        <span><i class="fas fa-search"></i></span>
+        <span><i class="fa-solid fa-plus"></i></span>
         <div class="answer">
             <div class="contents_left">
                 <div class="wrapper_left">
-    
+
                     <nav class="nav flex-column">
                         <br>
                         <a href="{% url 'add' %}" class="btn-flat-border">
-                            <td>
-                                <h6 style="font-weight: bold;"><i class="sub_list far fa-plus-square" style="font-weight:bold;
-                                                "></i>
-                            </td>質問の追加</h6>
+                            <i class=" sub_list far fa-plus-square" style="padding: 0; width: 38px;"></i>
+                            <h6 style="font-weight: bold;display: inline-block;">質問の追加</h6>
                         </a>
                     </nav>
                     <div class="main_history">
@@ -109,6 +109,7 @@
     </div>
 </header>
 <hr>
+
 <body>
     <div class="main_body row">
         <!-- 画面左部 -->
@@ -118,15 +119,12 @@
                 <nav class="nav flex-column">
                     <br>
                     <a href="{% url 'add' %}" class="btn-flat-border">
-                        <td>
-                            <h6 style="font-weight: bold;"><i class="sub_list far fa-plus-square" style="font-weight:bold;
-                        "></i>
-                        </td>質問の追加</h6>
+                        <i class=" sub_list far fa-plus-square" style="padding: 0; width: 38px;"></i>
+                        <h6 style="font-weight: bold;display: inline-block;">質問の追加</h6>
                     </a>
                     <a href="/myapp" class="btn-flat-border">
-                        <td>
-                            <h6 style="font-weight: bold;"><i class="sub_list far fa-list-alt"
-                                    style="font-weight:bold"></i>質問一覧</h6>
+                        <i class=" sub_list far fa-list-alt" style="padding: 0 10px;"></i>
+                        <h6 style="font-weight: bold;display: inline-block;">質問一覧</h6>
                     </a>
                 </nav>
                 <div class="main_history">
@@ -208,7 +206,7 @@
 
         $(document).ready(function () {
             var ghibuliTable = $('#table2').DataTable({
-                searching: false,
+                searching: true,
                 lengthChange: false,
                 info: false,
                 paging: false,
