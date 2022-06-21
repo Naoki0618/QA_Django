@@ -202,8 +202,8 @@ tr:hover{
 /* 詳細画面 */
 .wrapper {
   display: grid;
-  grid-template-columns: 60px 200px;
-  grid-template-rows: 20px 20px;
+  grid-template-columns: 100px 200px 100px;
+  grid-template-rows: 20px 20px 20px;
   grid-template-areas:
     "one two four"
     "one three four";
@@ -239,11 +239,6 @@ tr:hover{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.edit_button{
-  display: block;
-  margin: 5px 5px 5px auto;
 }
 
 /* 追加画面 */
@@ -402,6 +397,7 @@ tr.shown td.details-control:before {
   text-align: right;
 }
 
+
 /*アコーディオン追加 */
 .search_item {
   margin:10px;
@@ -441,11 +437,4 @@ tr.shown td.details-control:before {
 
 @media screen and (min-width:751px){
   #table2_wrapper label{display:none}
-}
-
-.card_headder{
-  vertical-align: middle;
-}
-.card_headder h5{
-  vertical-align: middle;
 }

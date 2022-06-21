@@ -50,21 +50,13 @@
                     </p>
                 </div>
             </div>
+            <div class="card w-100 mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Answer</h5>
+                    <p class="card-text">{{ posts.answer | linebreaksbr }}</p>
+                </div>
+            </div>
         </form>
-        <div class="card w-100 mb-3" style="display: block;">
-            <div class="card_headder">
-                <h5 class="card-title" style="display: block; float:left; margin:0;padding-top: 5px;padding-left: 5px;">Answer</h5>
-                <form action="{% url 'answer' posts.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" value="click" class="edit_button block block4 btn btn-success btn-lg btn-circle btn-circle" tabindex="-1" role="button" ">
-                        <i class="far fa-edit"></i>
-                    </button>
-                </form>
-            </div>
-            <div class="card-body">
-                <p class="card-text">{{ posts.answer | linebreaksbr }}</p>
-            </div>
-        </div>
 
         <!-- 戻る -->
         <form action="{% url 'delete' posts.id %}" method="POST">
