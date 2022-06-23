@@ -41,7 +41,7 @@
         <div class="table-responsive-sm d-none d-lg-block">
 
             <table border="1" id="table1" class="table table-hover">
-                <thead style="color: beige; background-color: rgb(98, 98, 119);">
+                <thead>
                     <tr>
                         <!-- <th></th>  -->
                         <th class="text-nowrap" style="width: 5%">ID</th>
