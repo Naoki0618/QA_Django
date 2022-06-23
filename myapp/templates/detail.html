@@ -4,7 +4,6 @@
 {% block content %}
 
     <!-- 画面右部 -->
-    <div class="main_contents col-10">
 
         <form action="{% url 'edit' posts.id %}" method="POST">
             {% csrf_token %}
@@ -72,6 +71,5 @@
             <a href="/myapp" class="btn btn-primary btn-lg" tabindex="-1" role="button"><i class="far fa-arrow-alt-circle-left"></i></a>
             <button class="btn btn-danger btn-lg" type="submit" onclick='return confirm("本当に削除しますか？");'><i class="far fa-trash-alt"></i></button>
         </form>
-    </div>
 
 {% endblock %}

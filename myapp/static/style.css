@@ -3,6 +3,10 @@ hr{
     margin: 0pt;
 }
 
+h6{
+  color: white;
+}
+
 a{
     color: rgb(0, 0, 0);
     text-decoration: none;
@@ -28,32 +32,32 @@ a:hover{
   border:0 none;
 }
 
-.main_history{
+.content{
   padding:0;
   /* text-align:center; */
 }
 
-.main_history table{
+.content table{
   margin: auto;
   padding: 10px 20px;
   display:block;
 }
 
-.main_history tbody,
-.main_history tr,
-.main_history th,
-.main_history td{
+.content tbody,
+.content tr,
+.content th,
+.content td{
   display:block;
   /* text-align:center; */
   color: #635c5c;
 }
 
-.main_history th{
+.content th{
   border-bottom:2px inset rgba(139, 145, 139, 0.945);
   padding-bottom: 5px;
 }
 
-.main_history td{
+.content td{
   opacity:80%;
   padding: 5px 10px;
   background-color:white;
@@ -67,18 +71,19 @@ a:hover{
 header{
     text-align:justify;
     padding:20px;
-    margin-bottom: 20px; 
+    /* margin-bottom: 20px;  */
+    background-color: #4b638f;
 }
 
 .header_logo,.header_title{
-  float:left;
-  display: inline;
+  /* float:left; */
+  display: inline-block;
   padding-right: 10px;
+  color: white;
 }
 
 .header_batch {
-  display: inline;
-  float:left;
+  display: inline-block;
 }
 
 .contents_list{
@@ -88,13 +93,14 @@ header{
 /* アイコン部 */
 #batch_icon{
   position: relative;
+  color: white;
 }
 
 #batch_count{
   opacity: 95%;
   position: absolute;
   top: 20px;
-  left: 250px;
+  left: 260px;
   border-radius:30px;
   height: 15px;
   width:  18px;
@@ -114,7 +120,8 @@ body {
 /* body左 */
 .contents_left {
     padding: 0px;
-    background-image: url("images/white_00007.jpeg");
+    /* background-image: url("images/white_00007.jpeg"); */
+    background-color:#221d1d;
     background-blend-mode: multiply;
 }
 
@@ -123,7 +130,7 @@ body {
 }
 
 .sub_list{
-    padding: 10px;
+    color: white;
 }
 
 .list_word{
@@ -140,6 +147,9 @@ body {
 
 .main_body{
     height: 100vh;
+    width: 100%;
+    margin: 0px;
+    justify-content: center;
 }
 
 .contents_right{
@@ -162,10 +172,10 @@ body {
   width: 65px;
   color: #fff;
 }
-.list_status:hover{
+/* .list_status:hover{
   color: #fff;
   background: #f56500;
-}
+} */
 
 .list_status {
    border-radius: 100vh;
@@ -183,20 +193,20 @@ body {
     transition: .4s;
 }
 
-.btn-flat-border:hover {
+/* .btn-flat-border:hover {
     background: #ffffff;
     color: #cc333386;
-}
+} */
 /* body左 テーブル*/
-tr:hover{
-    background-color: #fcfae1;
+
+
+.content {
+  /* display: none; */
 }
-
-
 
 
 .main_contents{
-  margin: 5px auto;
+  margin: 5px 0;
 }
 
 /* 詳細画面 */
@@ -384,7 +394,7 @@ tr.shown td.details-control:before {
 
 .btn-flat-border:hover {
   background: #ff7f7f;
-  color: white;
+  /* color: white; */
 }
 
 #table2{

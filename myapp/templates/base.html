@@ -31,9 +31,9 @@
     <title>QLog | 質問管理システム</title>
 </head>
 <header>
-    <div class="col-11 col-md-11" style="float: left; display: block;">
+    <div class="col-12 col-md-12"  style="height:100%;">
         <div class="header_logo">
-            <a href="/myapp"><i class="fas fa-box"></i></a>
+            <a href="/myapp"><i class="fas fa-box" style="color:white;"></i></a>
 
         </div>
         <div class="header_title">
@@ -73,45 +73,16 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- スマホ用　検索フォーム -->
-    <div class="contents_list col-0 col-md-0 d-lg-none">
-        <span><i class="fa-solid fa-plus"></i></span>
-        <div class="answer">
-            <div class="contents_left">
-                <div class="wrapper_left">
-
-                    <nav class="nav flex-column">
-                        <br>
-                        <a href="{% url 'add' %}" class="btn-flat-border">
-                            <i class=" sub_list far fa-plus-square" style="padding: 0; width: 38px;"></i>
-                            <h6 style="font-weight: bold;display: inline-block;">質問の追加</h6>
-                        </a>
-                    </nav>
-                    <div class="main_history">
-                        <table>
-                            <tr>
-                                <th>更新タイトル</th>
-                            </tr>
-                            {% if hists != 0 %}
-                            {% for hist in hists %}
-                            <tr>
-                                <td><a href="{% url 'detail' pk=hist.pk %}">{{ hist.question_title }}</a></td>
-                                <!-- <td>{{ post.question_title }}</td> -->
-                            </tr>
-                            {% endfor %}
-                            {% endif %}
-                        </table>
-                    </div>
-                </div>
-            </div>
+        
+        <!-- スマホ用　検索フォーム -->
+        <div class="contents_list col-0 col-md-0 d-lg-none" style="display: inline-block;">
+            <a href="{% url 'add' %}" class="btn-flat-border"><span><i class="fa-solid fa-plus"></i></span></a>
         </div>
     </div>
 </header>
-<hr>
 
 <body>
-    <div class="main_body row">
+    <div class="main_body row col-xs-12">
         <!-- 画面左部 -->
         <div class="contents_left d-none d-lg-block col-lg-2 col-sm-0">
             <div class="wrapper_left">
@@ -127,29 +98,32 @@
                         <h6 style="font-weight: bold;display: inline-block;">質問一覧</h6>
                     </a>
                 </nav>
-                <div class="main_history">
-                    <table>
-                        <tr>
-                            <th>更新タイトル</th>
-                        </tr>
-                        {% if hists != 0 %}
-                        {% for hist in hists %}
-                        <tr>
-                            <td><a href="{% url 'detail' pk=hist.pk %}">{{ hist.question_title }}</a></td>
-                            <!-- <td>{{ post.question_title }}</td> -->
-                        </tr>
-                        {% endfor %}
-                        {% endif %}
-                    </table>
-                </div>
 
+                <div class="box" style="padding-left: 0;">
+                    <a class="main_history" style="color:white ;margin-top: 20px; margin-left: 10px;">▼  更新タイトル</a>
+                  
+                    <div class="content">
+                        <table style="padding: 5px;">
+                            {% if hists != 0 %}
+                            {% for hist in hists %}
+                            <tr>
+                                <td><a href="{% url 'detail' pk=hist.pk %}">{{ hist.question_title }}</a></td>
+                                <!-- <td>{{ post.question_title }}</td> -->
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </table>
+                    </div>
+                  </div>
             </div>
 
         </div>
 
 
+        <div class="main_contents col-lg-10 col-xs-12">
         {% block content %}
         {% endblock %}
+    </div>
     </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
