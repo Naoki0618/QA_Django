@@ -13,6 +13,8 @@
                 <div class="col-1  col-sm-1 col-lg-6" style="padding-top: 20px;"><button type="submit" value="click"
                         class="block block4 btn btn-primary btn-lg btn-circle btn-circle" tabindex="-1" role="button"><i
                             class="fas fa-check"></i></button></div>
+
+
             </div>
 
             <div class="card">
@@ -29,10 +31,11 @@
                     <div class="category2 border-top">中項目</div>
                     <div class="category2_data border-top">{{ form.category_detail|add_class:'form-control' }}</div>
                     <div class="tags border-top border-bottom">検索タグ</div>
-                    <div class="tags_data border-top border-bottom">{{ form.tags|add_class:'form-control' }}
-                    <span style="font-size:5px;color:rgb(91, 79, 79)">※カンマ区切りで入力</span></div>
+                    <div class="tags_data border-top border-bottom">{{ form.tags|add_class:'form-control' }}<span
+                            style="font-size:5px;color:rgb(91, 79, 79)">※カンマ区切りで入力</span></div>
                 </div>
             </div>
+
         </form>
     </div>
 </div>

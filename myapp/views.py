@@ -12,8 +12,9 @@ from django.views.generic import DeleteView
 # 一覧画面
 def index(request):
     posts = Question.objects.order_by('id')
-    hists = Question.objects.order_by('-id')[:5]
+    hists = Question.objects.order_by('-id')[:10]
     new_orders = Question.objects.filter(status='新規')
+    form = QuestionForm(request.GET or None)
     try:
         len(posts)
     except:
@@ -31,6 +32,7 @@ def index(request):
         'posts':posts,
         'count':count,
         'hists':hists,
+        'form':form,
         'new_orders':new_orders,
     }
 
@@ -39,9 +41,10 @@ def index(request):
 # 質問詳細画面
 def detail(request, pk):
     posts = get_object_or_404(Question, pk=pk)
+    post_answer = Question.objects.order_by('id')
     posts.tags = posts.tags.split(",")
     count = Question.objects.filter(status='新規')
-    hists = Question.objects.order_by('-id')[:5]
+    hists = Question.objects.order_by('-id')[:10]
     new_orders = Question.objects.filter(status='新規')
     try:
         count = len(count)
@@ -52,6 +55,7 @@ def detail(request, pk):
         'count':count,
         'hists':hists,
         'new_orders':new_orders,
+        'post_answer':post_answer,
     }
 
     return render(request, 'detail.html', d)
@@ -61,7 +65,7 @@ def edit(request, pk):
 
     form = QuestionForm(request.GET or None)
     posts = Question.objects.get( pk=pk)
-    hists = Question.objects.order_by('-id')[:5]
+    hists = Question.objects.order_by('-id')[:10]
     new_orders = Question.objects.filter(status='新規')
 
     form.is_valid()
@@ -119,7 +123,7 @@ def add(request):
     posts = Question.objects.all()
     form = QuestionForm(request.GET or None)
     count = Question.objects.filter(status='新規')
-    hists = Question.objects.order_by('-id')[:5]
+    hists = Question.objects.order_by('-id')[:10]
     new_orders = Question.objects.filter(status='新規')
     try:
         count = len(count)
@@ -158,7 +162,7 @@ def answer(request, pk):
     form = QuestionForm(request.GET or None)
     posts = Question.objects.get( pk=pk)
     count = Question.objects.filter(status='新規')
-    hists = Question.objects.order_by('-id')[:5]
+    hists = Question.objects.order_by('-id')[:10]
     new_orders = Question.objects.filter(status='新規')
     try:
         count = len(count)
@@ -207,7 +211,7 @@ def delete(request, pk):
     
     posts = Question.objects.order_by('id')
     count = Question.objects.filter(status='新規')
-    hists = Question.objects.order_by('-id')[:5]
+    hists = Question.objects.order_by('-id')[:10]
     new_orders = Question.objects.filter(status='新規')
     try:
         count = len(count)
@@ -232,7 +236,7 @@ def find(request):
     profile_list = Question.objects.all()
     count = Question.objects.filter(status='新規')
     formset = QuestionForm(request.POST or None)
-    hists = Question.objects.order_by('-id')[:5]
+    hists = Question.objects.order_by('-id')[:10]
     new_orders = Question.objects.filter(status='新規')
     try:
         count = len(count)
