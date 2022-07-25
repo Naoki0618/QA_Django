@@ -148,6 +148,7 @@ def add(request):
             for p in posts:
                 p.tags = p.tags.split(",")
         d = {
+            'form':form,
             'posts':posts,
             'count':count,
             'hists':hists,
@@ -197,6 +198,7 @@ def answer(request, pk):
             'posts':posts,
             'count':count, 
             'hists':hists,
+            'form':form,
             'new_orders':new_orders,
         }
 
