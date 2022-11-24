@@ -1,7 +1,7 @@
 # Sample_Django
 
 ## usage method
-<p>git clone https://github.com/Naoki0618/Sample_Django.git</p>
+<p>git clone https://github.com/Naoki0618/QA_Django.git</p>
 <p>python manage.py makemigrations myapp</p>
 <p>python manage.py migrate</p>
 <p>python runserver</p>
